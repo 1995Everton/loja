@@ -1,10 +1,10 @@
-<fieldset class="field-container">
-    <input type="text" placeholder="Search..." class="field" (keydown)="onKeydown($event)"/>
-    <div class="icons-container">
-      <div class="icon-search"></div>
-      <div class="icon-close">
-        <div class="x-up"></div>
-        <div class="x-down"></div>
-      </div>
-    </div>
-</fieldset>
+<div class="search__container">
+  <div class="container__item">
+    <form class="form">
+      <input type="email" class="form__field" placeholder="O que voçê está procura?" />
+      <button type="button" class="btn btn--primary btn--inside uppercase orange">
+        <i class="fas fa-search"></i>
+      </button>
+    </form>
+  </div>
+</div>

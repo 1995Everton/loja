@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { IconsModule, InputsModule , WavesModule} from 'angular-bootstrap-md';
 
 import { HeaderComponent } from './header.component';
-import { IconsModule, InputsModule } from 'angular-bootstrap-md';
 import { SearchButtonComponent } from './search-button/search-button.component';
+import { NavbarModule } from '../navbar/navbar.module';
 
 
 
@@ -15,8 +16,10 @@ import { SearchButtonComponent } from './search-button/search-button.component';
   ],
   imports: [
     CommonModule,
+    NavbarModule,
     IconsModule,
-    InputsModule
+    InputsModule,
+    WavesModule
   ],
   exports: [
     HeaderComponent

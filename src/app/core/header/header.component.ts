@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  logo: string = 'https://static.kabum.com.br/conteudo/temas/001/imagens/topo/logo_kabum_.png'
+  logo: string = 'https://static.dafiti.com.br/images/kanui/logo-kanui.png'
 
   constructor() { }
 

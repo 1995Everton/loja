@@ -1,0 +1,44 @@
+<ul class="nav-menu">
+    <li>
+        <a class="active" href="#">
+            <i class="fa fa-home"></i>
+        </a>
+    </li>
+
+    <li class="mega-drop-down" *ngFor="let item of [1,2,3,4]">
+        <a href="#">
+            <span class="category">Mega Menu</span>
+        </a>
+        <div class="animated fadeIn mega-menu">
+            <div class="mega-menu-wrap">
+                <div class="row">
+                    <div class="col-md-3" *ngFor="let item of [1,2,3]">
+                        <h4 class="row mega-title">Description</h4>
+                        <ul class="description">
+                            <li>
+                                <a href="#">Women</a>
+                                <span>Description of Women</span>
+                            </li>
+                            <li>
+                                <a href="#">Men</a>
+                                <span>Description of men Cloths</span>
+                            </li>
+                            <li>
+                                <a href="#">Kids</a>
+                                <span>Description of Kids Cloths</span>
+                            </li>
+                            <li>
+                                <a href="#">Others</a>
+                                <span>Description of Others Cloths</span>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <img class="img-fluid" src="https://dafitistatic-a.akamaihd.net/dynamic_yield/cms/static/kanui/images/2b015c3f71a5d__TENISWHITE.gif">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
