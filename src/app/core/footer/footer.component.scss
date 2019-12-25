@@ -1,6 +1,14 @@
 .card-icon {
-    justify-content: center;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.page-footer {
+  background-color: #EDEDED !important;
+  color: #6b6b6b !important;
+  a {
+    color: #6b6b6b !important;
+  }
 }

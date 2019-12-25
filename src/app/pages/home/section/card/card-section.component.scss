@@ -1,0 +1,11 @@
+.title-card {
+  font-size: calc(2px + 1vw);
+  color: #000000d1;
+  font-family: 'Oswald', sans-serif;
+  display: flex;
+  text-transform: uppercase;
+  .strong {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+}

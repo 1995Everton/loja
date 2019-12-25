@@ -1,0 +1,30 @@
+<div class="row section" *ngIf="true">
+  <div class="col-12">
+    <h2 class="section-tilte">CALÇADOS</h2>
+  </div>
+  <div class="col-12 overflow-hidden row" *ngIf="!default; else _default">
+    <div class="col-3" *ngFor="let item of [1,2,3,4]">
+      <app-card-section src="https://dafitistatic-a.akamaihd.net/dynamic_yield/cms/static/images/2c1fae4fc3b6a___0056_2_Tenis_159_mas_ZO802SHM17GCG_6865181022_.jpg" title="3 VESTIDOS" [price]="149">
+      </app-card-section>
+    </div>
+  </div>
+  <ng-template #_default>
+    <div class="col-6 overflow-hidden" *ngIf="left">
+      <app-card-section src="https://dafitistatic-a.akamaihd.net/dynamic_yield/cms/static/kanui/images/10a7d386b8692__cluster2_3vestidos99.jpg" title="3 VESTIDOS" [price]="149">
+      </app-card-section>
+    </div>
+    <div class="col-6 overflow-hidden">
+      <div class="row">
+        <div class="col-6" *ngFor="let item of [1,2,3,4]">
+          <app-card-section src="https://dafitistatic-a.akamaihd.net/dynamic_yield/cms/static/images/2c1fae4fc3b6a___0056_2_Tenis_159_mas_ZO802SHM17GCG_6865181022_.jpg" title="3 VESTIDOS" [price]="149">
+          </app-card-section>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 overflow-hidden" *ngIf="!left">
+      <app-card-section src="https://dafitistatic-a.akamaihd.net/dynamic_yield/cms/static/kanui/images/10a7d386b8692__cluster2_3vestidos99.jpg" title="3 VESTIDOS" [price]="149">
+      </app-card-section>
+    </div>
+  </ng-template>
+
+</div>

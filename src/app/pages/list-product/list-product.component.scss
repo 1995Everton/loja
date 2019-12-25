@@ -1,0 +1,12 @@
+.title-tree-view {
+  text-transform: uppercase;
+  font-size: calc(13px + 1vw);
+  color: #000;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+  line-height: 32px;
+  @media (max-width: 600px) {
+    text-align: center;
+    font-size: 30px;
+  }
+}

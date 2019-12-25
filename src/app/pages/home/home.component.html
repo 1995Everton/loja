@@ -1,0 +1,20 @@
+ ​
+<div>
+  <picture>
+    <img src="https://dafitistatic-a.akamaihd.net/dynamic_yield/cms/static/kanui/images/1a474c8f2fc5c__after_frete_gratis_multiformatos_03.jpg" class="img-fluid" alt="Novidade Loja">
+  </picture>
+  <picture>
+    <img src="https://dafitistatic-a.akamaihd.net/dynamic_yield/cms/static/kanui/images/40b7368e9260__destaque_home.jpg" class="img-fluid" alt="Novidade Loja">
+  </picture>
+</div>
+<div class="container">
+  <mdb-carousel class="carousel slide mt-5" [interval]="2000" [animation]="'slide'">
+    <mdb-carousel-item *ngFor="let item of carousel">
+      <img class="d-block w-100" [src]="item" alt="First slide">
+    </mdb-carousel-item>
+  </mdb-carousel>
+  <app-section *ngFor="let item of [1,2,3,4,5]; let i = index" [left]="!!(i % 2)">
+  </app-section>
+  <app-section [default]="false">
+  </app-section>
+</div>

@@ -1,0 +1,14 @@
+<div class="select">
+  <select 
+    [(ngModel)]="_select" 
+    name="slct" 
+    id="slct" 
+    (change)="this.debource.next($event.target.value)"
+  >
+    <option 
+      *ngFor="let item of itens"
+      [value]="item"
+    >{{ item }}
+    </option>
+  </select>
+</div>
