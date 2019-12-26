@@ -1,18 +1,15 @@
 <mdb-card class="align-items-center">
   <div class="view overlay waves-light" mdbWavesEffect>
-    <mdb-card-img 
-      src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" 
-      alt="">
-    </mdb-card-img>
+    <mdb-card-img [src]="miniature"></mdb-card-img>
     <a>
       <div class="mask rgba-white-slight"></div>
     </a>
   </div>
   <mdb-card-body class="text-center">
     <div class="container-text">
-      <span class="truncate"> Jaqueta Corta Vento Doc Dog Capuz Preta</span> 
+      <span class="truncate">{{ name }}</span> 
     </div> 
-    <div>R$ 109,99</div>
+    <div>R$ {{ unitary_value.replace('.',',') }}</div>
   </mdb-card-body>
 </mdb-card>
     

@@ -15,7 +15,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: ':category/:item',
+    path: ':category/:sub_category',
     component: ListProductComponent
   },
   { 

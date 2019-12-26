@@ -20,19 +20,47 @@ export class TreeViewListComponent implements OnInit {
 
   public data: TreeView[] = [
     {
-      text: 'Furniture', 
+      text: 'GÊNERO', 
       items: [
-        { text: 'Tables & Chairs' },
-        { text: 'Sofas' },
-        { text: 'Occasional Furniture' }
+        { text: 'Feminino' }
       ]
     },
     {
-      text: 'Decor', 
+      text: 'CATEGORIA', 
       items: [
-        { text: 'Bed Linen' },
-        { text: 'Curtains & Blinds' },
-        { text: 'Carpets' }
+        { text: 'Casual' },
+        { text: 'Tenis de Corrida' },
+        { text: 'Skate' },
+        { text: 'Surf' },
+        { text: 'Aventura' }
+      ]
+    },
+    {
+      text: 'TÊNIS', 
+      items: [
+        { text: 'Casual' },
+        { text: 'Tenis de Corrida' },
+        { text: 'Skate' },
+        { text: 'Surf' },
+        { text: 'Aventura' }
+      ]
+    },
+    {
+      text: 'TAMANHO', 
+      items: [
+        { text: 'P' },
+        { text: 'M' },
+        { text: 'G' },
+        { text: 'GG' },
+        { text: '14' },
+        { text: '16' },
+        { text: '17' },
+        { text: '18' },
+        { text: '20' },
+        { text: '38' },
+        { text: '40' },
+        { text: '42' },
+        { text: '44' }
       ]
     }
   ];

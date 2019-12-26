@@ -26,4 +26,5 @@ export class NavbarComponent implements OnInit {
   navbar(){
     return this.categoryService.group(this.categories)
   }
+  
 }

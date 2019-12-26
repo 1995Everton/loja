@@ -8,4 +8,9 @@
   [kendoTreeViewSelectable]="selection"
   [(selectedKeys)]="selectedKeys"
  >
+ <ng-template kendoTreeViewNodeTemplate let-dataItem>
+  <span class="treeview-item">{{dataItem.text}}</span>
+  
+</ng-template>
+
 </kendo-treeview>
