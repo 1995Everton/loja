@@ -1,0 +1,47 @@
+<div class="row options">
+  <div class="col-12 col-md-12" *ngIf="loading; else content">
+    <div >
+      <ngx-skeleton-loader count="4"></ngx-skeleton-loader>
+    </div>
+  </div>
+  <ng-template #content>
+    <div class="col-12 col-md-12 border-bottom border-light">
+      <h2 class="title-product">{{ product?.name }}</h2>
+    </div>
+    <div class="col-12 col-md-12 mb-2">
+      <h1 class="title-price">R$ {{ product?.unitary_value.replace(".",",") }}</h1>
+      <span class="">3x de R$ {{ calc() }} sem juros no cartão</span>
+    </div>
+    <div class="col-12 col-md-12">
+
+      <span class="title-size">TAMANHO</span>
+      <ng-select 
+        [items]="_sizes"
+        bindLabel="name"
+        autofocus
+        bindValue="id"
+        appearance="outline"
+        [(ngModel)]="selectedSize">
+      </ng-select>
+      <button 
+        type="button" 
+        block="true"
+        color="warning" 
+        mdbBtn 
+        mdbWavesEffect
+      >Comprar</button>
+      <button
+        class="mt-2"
+        size="sm"
+        type="button" 
+        block="true"
+        color="light" 
+        mdbBtn 
+        mdbWavesEffect
+      >
+        <mdb-icon fas icon="heart"></mdb-icon>
+        Adicionar aos favoritos
+      </button>
+    </div>
+  </ng-template>
+</div>

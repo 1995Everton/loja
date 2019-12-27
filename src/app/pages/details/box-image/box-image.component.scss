@@ -1,0 +1,13 @@
+.gallery {
+  .loading-gallery {
+    display: table-caption;
+  }
+  .image {
+    max-width: 42%;
+    margin: 3px 0px;
+  }
+  .image-current {
+    width: 56%;
+  }
+  
+}

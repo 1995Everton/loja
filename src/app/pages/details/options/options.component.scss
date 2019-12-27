@@ -1,0 +1,24 @@
+
+
+.options {
+  .title-product,
+  .title-price,
+  .title-size {
+    text-transform: uppercase;
+    color: #000;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    line-height: 32px;
+  }
+  .title-product {
+    font-size: calc(6px + 1vw);
+  }
+  .title-price {
+    font-size: calc(13px + 1vw);
+  }
+  .title-size {
+    font-size: calc(6px + 1vw);
+  }
+}
+
+

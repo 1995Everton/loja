@@ -30,4 +30,8 @@ export class ProductService {
     return this.http
       .get<Product[]>(this.BASE_URL + "/product",{ params })
   }
+
+  findById(id: number): Observable<Product> {
+    return this.http.get<Product>(this.BASE_URL + "/product/"+ id)
+  }
 }

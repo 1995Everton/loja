@@ -1,15 +1,15 @@
 <mdb-card class="align-items-center">
   <div class="view overlay waves-light" mdbWavesEffect>
-    <mdb-card-img [src]="miniature"></mdb-card-img>
-    <a>
+    <mdb-card-img [src]="product.miniature"></mdb-card-img>
+    <a [routerLink]="['/details/',product.id]">
       <div class="mask rgba-white-slight"></div>
     </a>
   </div>
   <mdb-card-body class="text-center">
     <div class="container-text">
-      <span class="truncate">{{ name }}</span> 
+      <span class="truncate">{{ product.name }}</span> 
     </div> 
-    <div>R$ {{ unitary_value.replace('.',',') }}</div>
+    <div>R$ {{ product.unitary_value.replace('.',',') }}</div>
   </mdb-card-body>
 </mdb-card>
     

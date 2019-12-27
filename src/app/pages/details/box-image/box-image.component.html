@@ -1,0 +1,42 @@
+<div class="row no-gutters gallery">
+  <div class="col-4 col-md-3">
+    <div *ngIf="loading; else gallery">
+      <div class="loading-gallery">
+        <ngx-skeleton-loader count="3" appearance="circle"></ngx-skeleton-loader>
+      </div>
+    </div>
+    <ng-template #gallery>
+      <div *ngFor="let photo of _photos; let i = index">
+        <img 
+          [src]="photo.url" 
+          (click)="change(i)" 
+          class="img-thumbnail image"
+        />
+      </div>    
+    </ng-template>
+    
+  </div>
+  <div class="col-8 col-md-9">
+    <div *ngIf="loading; else photo">
+      <div class="loading-photo">
+        <ngx-skeleton-loader 
+          count="1" 
+          [theme]="{ 
+            'border-radius': '2px',
+            height: '200px'
+          }"
+        ></ngx-skeleton-loader>
+      </div>
+    </div>
+    <ng-template #photo>
+      <div class="p-2 view overlay zoom">
+        <img 
+          [src]="_current?.url" 
+          (click)="change(i)" 
+          class="img-fluid image-current"
+        />
+      </div>
+    </ng-template>
+  </div>
+</div>
+

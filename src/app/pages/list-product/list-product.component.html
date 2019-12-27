@@ -39,13 +39,7 @@
             </div>
             <ng-template #list>
               <div [class]="setColumns" *ngFor="let product of products" >
-                <app-card-list
-                  [miniature]="product.miniature"
-                  [name]="product.name"
-                  [unitary_value]="product.unitary_value"
-                >
-                </app-card-list
-                >
+                <app-card-list [product]="product"></app-card-list>
               </div>
               <div class="col-12 my-4">
                 <ngb-pagination

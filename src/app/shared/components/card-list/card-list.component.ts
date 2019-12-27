@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Product } from '../../models/product';
 
 @Component({
   selector: 'app-card-list',
@@ -7,9 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CardListComponent implements OnInit {
 
-  @Input() miniature: string
-  @Input() name: string
-  @Input() unitary_value: string
+  @Input() product: Product
 
   constructor() { }
 
