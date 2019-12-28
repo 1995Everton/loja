@@ -20,6 +20,7 @@ export class ListProductComponent implements OnInit {
   public order: string = 'Mais Populares'
   public column: string = '4 Colunas'
   private _products: Product[] = []
+  private _sub_category: number
 
   constructor(
     private router: Router,
@@ -29,16 +30,17 @@ export class ListProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe( (params: Params) => {
-      this.getProduct(parseInt(params.sub_category)) 
+      this._sub_category = parseInt(params.sub_category);
+      this.getProduct() 
     });     
   }
 
-  private getProduct(sub_category: number): void{
+  private getProduct(): void{
     this.message = ''
     this.loading = true
     this._products = []
     this.productService
-      .paginated(sub_category,this.page)
+      .paginated(this._sub_category,this.page)
       .pipe(finalize(() => this.loading = false))
       .subscribe(
         (success: any) => {
@@ -50,6 +52,10 @@ export class ListProductComponent implements OnInit {
           console.log(error)
         }
       )
+  }
+
+  paginate(): void{
+    this.getProduct()
   }
 
   get setColumns(): string{

@@ -45,7 +45,8 @@
                 <ngb-pagination
                   class="d-flex justify-content-center"
                   [(page)]="page"
-                  [collectionSize]="pageSize">
+                  [collectionSize]="pageSize"
+                  (pageChange)="paginate()">
                   <ng-template ngbPaginationPrevious>Prev</ng-template>
                   <ng-template ngbPaginationNext>Next</ng-template>
                 </ngb-pagination>

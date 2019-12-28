@@ -7,3 +7,42 @@
 :before {
   box-sizing: border-box
 }
+
+.app-cart {
+  .popover {
+    top: 4px !important;
+    left: -148px !important;
+    width: 367px !important;
+    max-width: none !important;
+    &::before,
+    &::after {
+      left: 92% !important;
+    }
+    .itens-container {
+      .image-content {
+        .img-fluid {
+          width: 70%;
+        }
+      }
+      .details {
+        display: flex;
+        flex-direction: column;
+        .name {
+          font-family: Roboto;
+          font-size: 12px;
+          color: #000;
+          font-weight: 700;
+        }
+        .size {
+          font-size: 9px;
+          color: #858585;
+        }
+        .price {
+          font-size: 14px;
+          color: #000;
+        }
+      }
+      
+    }
+  }
+}

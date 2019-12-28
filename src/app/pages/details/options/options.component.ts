@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductSize } from 'src/app/shared/models/product_size';
 import { Product } from 'src/app/shared/models/product';
+import { LocalCartService } from 'src/app/shared/services/local-cart.service';
 
 @Component({
   selector: 'app-options',
@@ -15,7 +16,9 @@ export class OptionsComponent implements OnInit {
   @Input() product : Product
   @Input() loading: boolean = true
 
-  constructor() { }
+  constructor(
+    private localCartService: LocalCartService
+  ) { }
 
   ngOnInit() {
     this._sizes.push(
@@ -32,9 +35,11 @@ export class OptionsComponent implements OnInit {
   }
   
   calc(): string{
-    console.log(Math.round(this.product.unitary_value/3));
-    
     return (this.product.unitary_value/3).toFixed(2).toString().replace('.',',')
+  }
+
+  addCart(): void{
+    this.localCartService.add(this.product)
   }
 
 }
