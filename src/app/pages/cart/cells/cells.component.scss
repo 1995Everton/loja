@@ -1,0 +1,22 @@
+.d-grid {
+  display: grid;
+  font-size: calc(1px + 0.7vw);
+  color: rgb(116, 112, 112);
+  
+  .title,
+  .sub-title {
+    font-size: calc(3px + 0.9vw);
+  }
+  .title {
+    font-weight:400;
+    color: #000;
+    font-family: 'Oswald', sans-serif;
+  }
+  .sub-title {
+    color: rgb(14, 13, 13);
+  }
+}
+
+.border-right {
+  border-right: 1px dotted #ECECEC;
+}

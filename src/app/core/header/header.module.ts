@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconsModule, InputsModule , WavesModule, PopoverModule, BadgeModule} from 'angular-bootstrap-md';
+import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './header.component';
 import { SearchButtonComponent } from './search-button/search-button.component';
 import { NavbarModule } from '../navbar/navbar.module';
-import { CartComponent } from './cart/cart.component';
+import { PopCartComponent } from './cart/pop-cart.component';
 
 
 
@@ -14,7 +15,7 @@ import { CartComponent } from './cart/cart.component';
   declarations: [
     HeaderComponent,
     SearchButtonComponent,
-    CartComponent
+    PopCartComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +24,8 @@ import { CartComponent } from './cart/cart.component';
     InputsModule,
     WavesModule,
     PopoverModule,
-    BadgeModule
+    BadgeModule,
+    RouterModule
   ],
   exports: [
     HeaderComponent

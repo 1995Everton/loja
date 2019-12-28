@@ -4,6 +4,7 @@ import { HomeModule } from './home/home.module';
 import { ListProductModule } from './list-product/list-product.module';
 import { ErrorsModule } from './errors/errors.module';
 import { DetailsModule } from './details/details.module';
+import { CartModule } from './cart/cart.module';
 
 
 
@@ -14,7 +15,8 @@ import { DetailsModule } from './details/details.module';
     HomeModule,
     ListProductModule,
     ErrorsModule,
-    DetailsModule
+    DetailsModule,
+    CartModule
   ]
 })
 export class PagesModule { }

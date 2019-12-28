@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { startWith } from 'rxjs/operators';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { startWith } from 'rxjs/operators';
 })
 export class LocalCartService {
 
-  private _userSubject = new BehaviorSubject<Product[]>(null)
+  private _userSubject = new Subject<Product[]>()
   private _key = 'cart'
 
   constructor() { }

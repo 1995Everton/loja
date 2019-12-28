@@ -1,0 +1,99 @@
+$bg: #3c3c3c;
+$white: #fff;
+$black: #202121;
+$warning: #fd840e;
+
+@mixin transition($property: all, $duration: 0.5s, $ease: cubic-bezier(0.65,-0.25,0.25, 1.95)) {
+  transition: $property $duration $ease;
+}
+
+.app-cart {
+  .popover {
+    top: 4px !important;
+    left: -148px !important;
+    width: 367px !important;
+    max-width: none !important;
+    &::before,
+    &::after {
+      left: 92% !important;
+    }
+    .itens-container {
+      .image-content {
+        .img-fluid {
+          width: 70%;
+        }
+      }
+      .details {
+        display: flex;
+        flex-direction: column;
+        .name {
+          font-family: Roboto;
+          font-size: 12px;
+          color: #000;
+          font-weight: 700;
+        }
+        .size {
+          font-size: 9px;
+          color: #858585;
+        }
+        .price {
+          font-size: 14px;
+          color: #000;
+        }
+      }
+    }
+  }
+  .sub-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    .title {
+      font-size: 12px;
+      color: #858585;
+    }
+    .total {
+      font-size: 15px;
+      font-family: Roboto;
+      color: #000;
+      font-weight:700;
+    }
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+    a {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      outline: none;
+      border: 0;
+      vertical-align: middle;
+      text-decoration: none;
+      font-size: inherit;
+      font-family: inherit;
+      &.learn-more {
+        @include transition(all, 0.5s, cubic-bezier(0.65,-0.25,0.25,1.95));
+        font-weight: 900;
+        padding: 1rem 5rem;
+        background: $warning;
+        color: $white;
+        text-transform: uppercase;
+        &:hover, &:focus, &:active {
+          letter-spacing: 0.125rem;
+        }
+      }
+    }
+  }
+  .cart-empty-title {
+    margin: 24px;
+    text-align: center;
+    font-size: 20px;
+    color: #000000;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 9px;
+    border-bottom: none;
+    font-family: "Oswald";
+  }
+}

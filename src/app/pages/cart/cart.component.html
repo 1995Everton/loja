@@ -1,0 +1,20 @@
+<div class="container cart">
+  <div class="col-12 col-md-12 row no-gutters align-items-center border-bottom border-light py-3">
+    <div class="col-md-8 d-flex flex-column">
+      <span class="title-cart">CARRINHO - KANUI</span>
+      <span class="title-acount">2 ITENS</span>
+    </div>
+    <div class="col-md-4">
+      <button 
+        type="button" 
+        class="botton-finish"
+        block="true"
+        mdbBtn  
+        mdbWavesEffect>Finalizar Compra
+      </button>
+    </div>
+  </div>
+  <div class="col-12 col-md-12 border-cells" *ngFor="let item of [1,2]">
+    <app-cells></app-cells>
+  </div>
+</div>

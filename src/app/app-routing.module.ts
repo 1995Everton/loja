@@ -4,12 +4,17 @@ import { HomeComponent } from './pages/home/home.component';
 import { ListProductComponent } from './pages/list-product/list-product.component';
 import { NotFoundComponent } from './pages/errors/not-found/not-found.component';
 import { DetailsComponent } from './pages/details/details.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 
 const routes: Routes = [
   { 
     path: 'not-found' , 
     component: NotFoundComponent
+  },
+  {
+    path: 'cart',
+    component: CartComponent
   },
   {
     path: 'details/:id',

@@ -1,0 +1,13 @@
+<div class="app-cart">
+  <i 
+  class="fas fa-shopping-cart badge-icon" 
+  triggers="focus"
+  placement="bottom"
+  [mdbPopover]="cart">
+  <mdb-badge *ngIf="count" id="badge-content" color="amber darken-2">{{ count }}</mdb-badge>
+</i>
+<ng-template #cart>
+  <div [innerHtml]="template" (click)="goToCart()"></div>
+</ng-template>
+</div>
+

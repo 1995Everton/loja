@@ -1,0 +1,22 @@
+.cart {
+  padding: 20px 0;
+  .title-cart {
+    font-weight:400;
+    font-size: calc(4px + 1vw);
+    font-family: 'Oswald', sans-serif;
+  }
+  .title-acount {
+    font-size: calc(1px + 1vw);
+    color: rgb(116, 112, 112);
+    font-family: 'Oswald', sans-serif;
+    
+  }
+  .botton-finish {
+    background-color: #fd840e;
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+  }
+  .border-cells {
+    border-bottom: 1px dotted #ECECEC;
+  }
+}
