@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Product } from 'src/app/shared/models/product';
 import { LocalCartService } from 'src/app/shared/services/local-cart.service';
 import { ToastrService } from 'ngx-toastr';
@@ -24,12 +24,16 @@ export class CellsComponent implements OnInit {
 
   ngOnInit() {
     this.amount = this.product.amount
-    for (let index = 0; index < 20 ; index++) {
+    for (let index = 1; index < 20 ; index++) {
       this.quantities.push(index)
     }
     for (let index = 20; index < 50 ; index+=2) {
       this.sizes.push(index)
     }
+  }
+
+  onChange($event){
+    this.localCartService.update(this.product.id,this.amount)
   }
 
   remove() {

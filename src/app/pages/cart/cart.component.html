@@ -58,16 +58,24 @@
           </div>
         </form>
         <ul class="list-group freight-list">
-          <li *ngFor="let item of freight" class="list-group-item py-0">
+          <li *ngFor="let item of freight; let i = index" class="list-group-item py-0">
             <div class="row no-gutters justify-content-between align-items-center">
-              <mdb-checkbox 
-                class="col-3" 
-                [checked]="false" 
-                [default]="true"
-                [disabled]="!isDisabled(item.error)"
-                >
-              </mdb-checkbox>
-              <span class="text-muted col-3">R$ {{  money(item.price)  }}</span>
+
+              <div class="col-3">
+                <label class="radio">
+                  <input 
+                    type="radio"
+                    name="radio"
+                    [disabled]="!isDisabled(item.error)"
+                    id="radio-{{item.code}}"
+                    [(ngModel)]="value_freight"
+                    [value]="item.code"
+                  >
+                  <span></span>
+                </label>
+              </div>
+
+              <span class="text-muted col-3">{{  money(item.price)  }}</span>
               <span class="font-weight-bolder col-3">{{  item.name  }}</span>
               <span 
                 *ngIf="isDisabled(item.error); else notavailable" 
@@ -80,6 +88,7 @@
             </div>
           </li>
         </ul>
+       
       </div>
       <div class="col-4 col-md-4">
         <span class="title-cart d-block py-2 mb-2">Resumo</span>
@@ -95,9 +104,11 @@
           <li class="list-group-item">
             <div class="d-flex justify-content-between align-items-center">
               <span class="h4">Total</span>
-              <span class="h4">R$ 314,98</span>
+              <span class="h4">{{ money(totalProduct + priceFreight) }}</span>
             </div>
-            <div class="d-block text-right">em até 7x de R$ 45,00</div>
+            <div class="d-block text-right">
+                em até 7x de {{ money( (totalProduct + priceFreight) / 7) }}
+            </div>
           </li>
         </ul>
         <div class="d-block">
@@ -106,6 +117,7 @@
             class="botton-finish"
             block="true"
             mdbBtn  
+            (click)="finish()"
             mdbWavesEffect>Finalizar Compra
           </button>
         </div>

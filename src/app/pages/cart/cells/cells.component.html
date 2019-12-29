@@ -44,10 +44,12 @@
          
           <div class="col-6 col-md-6">
             <ng-select 
-              appearance="outline"
+              [(ngModel)]="amount"
+              (change)="onChange($event)"
               [clearable]="false"
               [items]="quantities"
-              [(ngModel)]="amount">
+              appearance="outline"
+            >
             </ng-select>
           </div>
         </div>

@@ -17,7 +17,6 @@ export class LocalCartService {
     let string = this.get()
     string.push(product)
     this.set(string)
-    this._userSubject.next(this.get())
   }
 
   getItems(): Observable<Product[]>{
@@ -26,11 +25,23 @@ export class LocalCartService {
       .pipe(startWith(this.get()))
   }
 
+  update(id: number,size: number){
+    let string = this.get()
+    let novo: Product[] = []
+    let product = string.find( product => product.id == id)
+    for (let i= 0; i< size; i++) {
+      novo.push(product)
+    }
+    novo.push(
+      ...string.filter( product => product.id != id)
+    )
+    this.set(novo)
+  }
+
   remove(id): void{
     let string = this.get()
     string = string.filter( product => product.id != id)
     this.set(string)
-    this._userSubject.next(this.get())
   }
 
   clean(){
@@ -56,6 +67,7 @@ export class LocalCartService {
   private set(products: Product[]):void{
     let value = JSON.stringify(products);
     window.localStorage.setItem(this._key,value)
+    this._userSubject.next(this.get())
   }
 
   private get() :Product[] {

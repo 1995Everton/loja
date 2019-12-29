@@ -1,6 +1,6 @@
 export interface Freight {
    name: string
-   code: number
+   code: string
    price: number,
    deadline  :number
    error : Array<any>

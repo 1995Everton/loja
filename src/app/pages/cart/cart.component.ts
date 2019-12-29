@@ -4,6 +4,12 @@ import { Freight } from 'src/app/shared/models/freight';
 import { LocalCartService } from 'src/app/shared/services/local-cart.service';
 import { Product } from 'src/app/shared/models/product';
 import { finalize } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
+
+interface Resume {
+  text: string
+  value: string
+}
 
 @Component({
   selector: 'app-cart',
@@ -12,31 +18,15 @@ import { finalize } from 'rxjs/operators';
 })
 export class CartComponent implements OnInit {
 
-  private freight: Freight[]= []
+  
   private products: Product[] = []
+  private freight: Freight[]= []
   private loading_freight: boolean = false
+  private value_freight: string
   private cep = ''
 
-  private resume = [
-    {
-      text: 'Total dos Produtos:',
-      value: 'R$ 159,90'
-    },
-    {
-      text: 'Frete:',
-      value: 'R$ 26,41'
-    },
-    {
-      text: 'Crédito:',
-      value: '-R$ 0,00'
-    },
-    {
-      text: 'Serviços:',
-      value: 'R$ 0,00'
-    }
-  ]
-
   constructor(
+    private toastr: ToastrService,
     private localCartService: LocalCartService,
     private postOfficeService: PostOfficeService
   ) { }
@@ -66,9 +56,50 @@ export class CartComponent implements OnInit {
         error => console.log(error)
       )
   }
+  finish(): void{
+    if(!this.priceFreight){
+      this.toastr.info('','Escolha uma modalidade de frete')
+      return;
+    }
+    console.log('Emitir Evento')
+  }
+
+  get resume(): Resume[]{
+    return [
+      {
+        text: 'Total dos Produtos:',
+        value: this.money(this.totalProduct)
+      },
+      {
+        text: 'Frete:',
+        value: this.money(this.priceFreight)
+      },
+      {
+        text: 'Crédito:',
+        value: '-R$ 0,00'
+      },
+      {
+        text: 'Serviços:',
+        value: 'R$ 0,00'
+      }
+    ]
+  }
+
+  get totalProduct(): number{
+    return this.products
+      .reduce( (acount, product) => acount + (product.unitary_value * product.amount), 0)
+  }
+
+  get priceFreight(): number{
+    let freight = 0
+    if(this.value_freight){
+      freight = this.freight.find( item => item.code == this.value_freight).price
+    }
+    return freight
+  }
 
   private money(value : any): string{
-    return parseFloat(value).toFixed(2).replace('.',',')
+    return 'R$ '+parseFloat(value).toFixed(2).replace('.',',')
   }
 
   private isDisabled( value : any): boolean{
