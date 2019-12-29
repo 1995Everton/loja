@@ -3,7 +3,7 @@
     <div class="row no-gutters">
       <div class="col-3 col-md-3">
         <img 
-          src="https://t-static.dafiti.com.br/ZPkR2EHEkUXWZCZobRPi0JXaITw=/fit-in/430x623/static.dafiti.com.br/p/ride-skateboard-t%c3%aanis-ride-skateboard-mid-tornado-vinho-0347-0716981-1-zoom.jpg" 
+          [src]="product.miniature" 
           class="img-fluid" 
           style="width: 70%;"
           alt="Responsive image"
@@ -11,12 +11,15 @@
       </div>
       <div class="col-5 col-md-5 align-self-center">
         <div class="d-grid">
-          <span class="title d-block text-truncate">Ride Skateboard</span>
-          <span class="sub-title d-block text-truncate">Tênis Ride Skateboard Mid Tornado Vinho</span>
-          <span>Sku - RI087SHM29WZQ-49</span>
+          <span class="title d-block text-truncate">{{ product.name }}</span>
+          <span class="sub-title d-block text-truncate">{{ product.details.substr(0,30) }}</span>
           <span>Tipo de frete: Leve</span>
           <span>Vendido e entregue por Kanui</span>
-          <span>Remover Produto</span>
+          <div class="my-2 trash" (click)="remove()">
+            <mdb-icon fas icon="trash-alt"></mdb-icon>
+            <span class="ml-2">Remover Produto</span>
+          </div>
+          
         </div>
       </div>
       <div class="col-4 col-md-4 align-self-center border-right">
@@ -56,13 +59,13 @@
       <div class="col-12 col-md-12 pb-2 border-bottom border-light">
         <div class="d-flex justify-content-between">
           <span class="font-weight-light">Individual</span>
-          <span class="font-weight-bolder">R$ 134,99</span>
+          <span class="font-weight-bolder">R$ {{ money(product.unitary_value) }}</span>
         </div>
       </div>
       <div class="col-12 col-md-12 my-3">
         <div class="d-flex justify-content-between">
           <span>Subtotal</span>
-          <span class="font-weight-bold">R$ 134,99</span>
+          <span class="font-weight-bold">R$ {{ money(product.unitary_value * product.amount) }}</span>
         </div>
       </div>
     </div>

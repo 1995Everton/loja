@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ProductSize } from 'src/app/shared/models/product_size';
 import { Product } from 'src/app/shared/models/product';
 import { LocalCartService } from 'src/app/shared/services/local-cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-options',
@@ -17,6 +18,7 @@ export class OptionsComponent implements OnInit {
   @Input() loading: boolean = true
 
   constructor(
+    private toastr: ToastrService,
     private localCartService: LocalCartService
   ) { }
 
@@ -40,6 +42,7 @@ export class OptionsComponent implements OnInit {
 
   addCart(): void{
     this.localCartService.add(this.product)
+    this.toastr.success('', 'Produto adicionado ao carrinho');
   }
 
 }

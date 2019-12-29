@@ -19,4 +19,14 @@
   .border-cells {
     border-bottom: 1px dotted #ECECEC;
   }
+  .freight-list {
+    font-size: calc(1px + 1vw);
+    .list-term {
+      color: #FF5B23;
+    }
+  }
+  .spinner-grow {
+    width: 1rem !important;
+    height: 1rem !important;
+  }
 }

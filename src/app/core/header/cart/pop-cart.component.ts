@@ -45,23 +45,14 @@ export class PopCartComponent implements OnInit {
   }
 
   private getTemplateCart(): string{
-    let cart = {}
-    
-    for (const product of this._cart) {
-      let { id , unitary_value, name, miniature} = product
-      if(!cart[id]) cart[id] = {}
-      cart[id]['name'] = name
-      cart[id]['unitary_value'] = unitary_value
-      cart[id]['miniature'] = miniature
-      cart[id]['amount'] = (cart[id]['amount'] || 0) + 1 
-    }
-    let sub_total = Object.values(cart)
-      .reduce( (count: number,next: any) => 
-        (parseFloat(next.unitary_value) * parseFloat( next.amount)) + count,0) as number
+    let newCart = this.localCartService.totalize(this._cart)
+    let sub_total = newCart
+      .reduce( (count: number,next: Product) => 
+        (next.unitary_value * next.amount) + count,0) as number
 
     return `
       <div class="row no-gutters">
-        ${Object.values(cart).map( ({ name , amount , unitary_value,miniature}) => {
+        ${newCart.map( ({ name, amount, unitary_value, miniature}) => {
           return `
           <div class="col-12 row no-gutters itens-container align-items-center border-bottom border-light">
             <div class="col-3 image-content">

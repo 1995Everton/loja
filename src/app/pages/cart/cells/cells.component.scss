@@ -15,6 +15,12 @@
   .sub-title {
     color: rgb(14, 13, 13);
   }
+  .trash {
+    cursor: pointer;
+    &:hover {
+      color: #858585;
+    }
+  }
 }
 
 .border-right {

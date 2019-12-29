@@ -28,7 +28,7 @@ export class LocalCartService {
 
   remove(id): void{
     let string = this.get()
-    string = string.filter( product => product.id = id)
+    string = string.filter( product => product.id != id)
     this.set(string)
     this._userSubject.next(this.get())
   }
@@ -36,6 +36,21 @@ export class LocalCartService {
   clean(){
     window.localStorage.removeItem(this._key)
     this._userSubject.next(this.get())
+  }
+
+  totalize( products : Product[]): Product[] {
+    let totalize = {}
+    for (const product of products) {
+      let { id , ...resto } = product
+      if(!totalize[id]) totalize[id] = {}
+      let { amount } = totalize[id]
+      totalize[id] = {
+        id,
+        amount: (amount || 0) + 1 ,
+        ...resto
+      }
+    }
+    return Object.values(totalize) as Product[]
   }
 
   private set(products: Product[]):void{

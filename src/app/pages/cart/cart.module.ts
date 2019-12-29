@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartComponent } from './cart.component';
-import { ButtonsModule, WavesModule } from 'angular-bootstrap-md';
+import { ButtonsModule, WavesModule, InputsModule, CheckboxModule, IconsModule } from 'angular-bootstrap-md';
 import { CellsComponent } from './cells/cells.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
@@ -16,7 +16,10 @@ import { FormsModule } from '@angular/forms';
     ButtonsModule,
     WavesModule,
     NgSelectModule,
-    FormsModule
+    FormsModule,
+    InputsModule,
+    CheckboxModule,
+    IconsModule
   ]
 })
 export class CartModule { }

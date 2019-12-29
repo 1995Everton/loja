@@ -11,4 +11,6 @@ export interface Product {
   updated_at: string
   category_id: number
   brand_id: number
+  amount?: number
+
 }
