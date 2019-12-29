@@ -5,12 +5,21 @@ import { ListProductComponent } from './pages/list-product/list-product.componen
 import { NotFoundComponent } from './pages/errors/not-found/not-found.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { LoginComponent } from './pages/login/login.component';
+import { LoginGuard } from './core/guard/login.guard';
 
 
 const routes: Routes = [
   { 
     path: 'not-found' , 
     component: NotFoundComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate:[
+      LoginGuard
+    ]
   },
   {
     path: 'cart',

@@ -6,6 +6,8 @@ import { FooterModule } from './footer/footer.module';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarModule } from './navbar/navbar.module';
 import { NavbarComponent } from './navbar/navbar.component';
+import { RequestInterceptor } from './interceptor/request.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 
@@ -24,6 +26,13 @@ import { NavbarComponent } from './navbar/navbar.component';
     HeaderComponent,
     FooterComponent,
     NavbarComponent
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestInterceptor,
+      multi: true
+    }
   ]
 })
 export class CoreModule { }
