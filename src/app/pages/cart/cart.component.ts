@@ -43,7 +43,7 @@ export class CartComponent implements OnInit {
   searchFreight() {
     this.loading_freight = true
     this.postOfficeService
-      .freight(this.cep)
+      .freight(this.cep,this.products.reduce( (acount,product) => acount + product.amount ,0))
       .pipe(finalize( () => this.loading_freight = false))
       .subscribe(
         success => {

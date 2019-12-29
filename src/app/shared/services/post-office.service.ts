@@ -16,7 +16,7 @@ export class PostOfficeService {
     private http: HttpClient
   ) { }
 
-  freight(destination: string): Observable<Freight[]>{
+  freight(destination: string, quantity: number): Observable<Freight[]>{
     const data = { // Parametros fixos
       origin: "13213-086",
       destination,
@@ -24,7 +24,7 @@ export class PostOfficeService {
       height: 10,
       length: 20,
       weight: 0.3,
-      quantity: 1
+      quantity
     }
     return this.http
       .post<Freight[]>(this.BASE_URL + "/calculate_price",data)
