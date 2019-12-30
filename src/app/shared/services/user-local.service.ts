@@ -11,7 +11,6 @@ export class UserLocalService implements OnInit {
 
 
   private _userSubject = new BehaviorSubject<UserToken>(null)
-  private _user: UserToken
 
   constructor(
     private tokenService : TokenService
@@ -35,18 +34,23 @@ export class UserLocalService implements OnInit {
   }
 
   public userName(): string {
-    return this._user.name
+    return this.decode().name
   }
 
   public userId(): number {
-    return this._user.id
+    return this.decode().id
+  }
+
+  public logout(): void {
+    this.tokenService.removerToken()
   }
 
   private decodeAndNotify():void {
-    const token = this.tokenService.getToken()
-    const user = jwtDecode(token) as UserToken
-    this._user = user
-    this._userSubject.next(user)
+    this._userSubject.next(this.decode())
   }
 
+  private decode(): UserToken{
+    const token = this.tokenService.getToken()
+    return jwtDecode(token) as UserToken
+  }
 }

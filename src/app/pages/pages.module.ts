@@ -6,8 +6,7 @@ import { ErrorsModule } from './errors/errors.module';
 import { DetailsModule } from './details/details.module';
 import { CartModule } from './cart/cart.module';
 import { LoginModule } from './login/login.module';
-
-
+import { AccountModule } from './account/account.module';
 
 @NgModule({
   declarations: [],
@@ -18,7 +17,8 @@ import { LoginModule } from './login/login.module';
     ErrorsModule,
     DetailsModule,
     CartModule,
-    LoginModule
+    LoginModule,
+    AccountModule
   ]
 })
 export class PagesModule { }
