@@ -24,8 +24,9 @@
           <a 
             *ngIf="isLogged; else sign"
             class="h6-responsive" 
+            style="display: grid;"
             [routerLink]="['/account','home']"
-          >Olá, {{ username }}
+          ><span class="text-truncate"> Olá, {{ username }}</span>
           </a>
           <ng-template #sign>
             <a class="h6-responsive" [routerLink]="['/login']">Entrar</a>

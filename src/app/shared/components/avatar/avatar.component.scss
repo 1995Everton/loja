@@ -1,0 +1,28 @@
+a {
+  color: RoyalBlue;
+  font-weight: normal;
+  text-decoration: none;
+  &:hover {
+    color: CornflowerBlue;
+  }
+  .circle {
+    color: transparent;
+  } 
+}
+
+.circle {
+	line-height: 0;
+	display: inline-block;
+	margin: 5px;
+  border: 2px solid rgba(255,255,255,0.4);
+	border-radius: 50%;
+	transition: linear 0.25s;
+  &:hover {
+    transition: ease-out 0.2s;
+    border: 2px solid rgba(255,255,255,0.8);
+    -webkit-transition: ease-out 0.2s;
+  }
+  img {
+    border-radius: 50%;
+  }
+}
