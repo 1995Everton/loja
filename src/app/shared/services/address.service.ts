@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AddressService {
+ 
 
   private BASE_URL = environment.BASE_URL + '/address'
 
@@ -17,5 +18,9 @@ export class AddressService {
 
   all(): Observable<Address[]>{
     return this.http.get<Address[]>(this.BASE_URL)
+  }
+
+  add(address: Address): Observable<Address>{
+   return this.http.post<Address>(this.BASE_URL, { ...address })
   }
 }

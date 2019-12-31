@@ -12,13 +12,13 @@ import { PersonalAccountComponent } from './personal-account/personal-account.co
 import { RequestsAccountComponent } from './requests-account/requests-account.component';
 import { WishlistAccountComponent } from './wishlist-account/wishlist-account.component';
 import { AvatarModule } from 'src/app/shared/components/avatar/avatar.module';
+import { AddressAccountModule } from './address-account/address-account.module';
 
 @NgModule({
   declarations: [
     AccountComponent,
     HomeAccountComponent,
     NavAccountComponent,
-    AddressAccountComponent,
     PersonalAccountComponent,
     RequestsAccountComponent,
     WishlistAccountComponent
@@ -33,7 +33,8 @@ import { AvatarModule } from 'src/app/shared/components/avatar/avatar.module';
     TableModule,
     WavesModule,
     ButtonsModule,
-    DropdownModule
+    DropdownModule,
+    AddressAccountModule
   ]
 })
 export class AccountModule { }
