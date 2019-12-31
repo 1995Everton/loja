@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardListComponent } from './card-list.component';
-import { CardsModule, BadgeModule, WavesModule } from 'angular-bootstrap-md';
+import { CardsModule, BadgeModule, WavesModule, IconsModule } from 'angular-bootstrap-md';
 import { RouterModule } from '@angular/router';
 
 
@@ -15,7 +15,8 @@ import { RouterModule } from '@angular/router';
     CardsModule,
     BadgeModule,
     WavesModule,
-    RouterModule
+    RouterModule,
+    IconsModule
   ],
   exports: [
     CardListComponent

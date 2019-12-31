@@ -23,4 +23,9 @@ export class UserService {
   put(user: User): Observable<User> {
     return this.http.put<User>(this.BASE_URL + '/user',{ user })
   }
+
+  toggleFavorite(product_id : number): Observable<any>{
+    return this.http.post(this.BASE_URL + '/product/' + product_id,{})
+  }
+  
 }

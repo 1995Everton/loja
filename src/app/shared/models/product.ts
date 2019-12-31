@@ -1,3 +1,4 @@
+
 export interface Product {
   id: number
   name: string
@@ -11,6 +12,7 @@ export interface Product {
   updated_at: string
   category_id: number
   brand_id: number
-  amount?: number
+  amount?: number,
+  favorites?: Array<any>
 
 }

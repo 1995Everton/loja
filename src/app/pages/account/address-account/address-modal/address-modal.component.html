@@ -13,6 +13,8 @@
 
 <div 
   mdbModal 
+  [config]="{ignoreBackdropClick: true}"
+  ignoreBackdropClick
   #frame="mdbModal" 
   class="modal fade left" 
   id="frameModalTop" 
@@ -41,13 +43,13 @@
               <input 
                 type="text"
                 id="street" 
-                [formControl]="street" 
+                [formControl]="control('street')" 
                 class="form-control"
                 mdbInput 
                 mdbValidate
               >
               <label for="street">Rua</label>
-              <mdb-error *ngIf="street.invalid && (street.dirty || street.touched)">
+              <mdb-error *ngIf="error('street','required')">
                 Campo Obrigatório
               </mdb-error>
             </div>
@@ -55,17 +57,20 @@
           <div class="col-4 col-md-4">
             <div class="md-form my-1">
               <input 
-                type="text"
+                type="number"
                 id="number" 
-                [formControl]="number" 
+                [formControl]="control('number')" 
                 class="form-control"
                 mdbInput 
                 mdbValidate
               >
               <label for="number">N°</label>
-              <mdb-error *ngIf="number.invalid && (number.dirty || number.touched)">
+              <mdb-error *ngIf="error('number','required'); else numberNumber">
                 Campo Obrigatório
               </mdb-error>
+              <ng-template #numberNumber>
+                <mdb-error *ngIf="error('number','number')">Numero Invalido</mdb-error>
+              </ng-template>
             </div>
           </div>
           <div class="col-6 col-md-6">
@@ -73,13 +78,13 @@
               <input 
                 type="text"
                 id="complement" 
-                [formControl]="complement" 
+                [formControl]="control('complement')" 
                 class="form-control"
                 mdbInput 
                 mdbValidate
               >
               <label for="complement">Complemento</label>
-              <mdb-error *ngIf="complement.invalid && (complement.dirty || complement.touched)">
+              <mdb-error *ngIf="error('complement','required')">
                 Campo Obrigatório
               </mdb-error>
             </div>
@@ -89,64 +94,60 @@
               <input 
                 type="text"
                 id="neighborhood" 
-                [formControl]="neighborhood" 
+                [formControl]="control('neighborhood')" 
                 class="form-control"
                 mdbInput 
                 mdbValidate
               >
               <label for="neighborhood">Bairro</label>
-              <mdb-error *ngIf="neighborhood.invalid && (neighborhood.dirty || neighborhood.touched)">
+              <mdb-error *ngIf="error('neighborhood','required')">
                 Campo Obrigatório
               </mdb-error>
             </div>
           </div>
           <div class="col-4 col-md-4">
-            <div class="md-form my-1">
+            <div class="md-form my-2">
               <input 
                 type="text"
                 id="cep" 
-                [formControl]="cep" 
+                [formControl]="control('cep')" 
                 class="form-control"
                 mdbInput 
                 mdbValidate
               />
               <label for="cep">CEP</label>
-              <mdb-error *ngIf="cep.invalid && (cep.dirty || cep.touched)">
+              <mdb-error *ngIf="error('cep','required'); else cepCep">
                 Campo Obrigatório
               </mdb-error>
+              <ng-template #cepCep>
+                <mdb-error *ngIf="error('cep','cep')">CEP Invalido</mdb-error>
+              </ng-template>
             </div>
           </div>
           <div class="col-4 col-md-4">
-            <div class="md-form my-1">
+            <div class="md-form my-2">
               <input 
                 type="text"
                 id="city" 
-                [formControl]="city" 
+                [formControl]="control('city')" 
                 class="form-control"
                 mdbInput 
                 mdbValidate
               >
               <label for="city">Cidade</label>
-              <mdb-error *ngIf="city.invalid && (city.dirty || city.touched)">
+              <mdb-error *ngIf="error('city','required')">
                 Campo Obrigatório
               </mdb-error>
             </div>
           </div>
           <div class="col-4 col-md-4">
-            <div class="md-form my-1">
-              <input 
-                type="text"
-                id="state" 
-                [formControl]="state" 
-                class="form-control"
-                mdbInput 
-                mdbValidate
-              >
-              <label for="state">Estado</label>
-              <mdb-error *ngIf="state.invalid && (state.dirty || state.touched)">
-                Campo Obrigatório
-              </mdb-error>
-            </div>
+            <ng-select 
+              [items]="states_options"
+              bindLabel="value"
+              bindValue="key"
+              [clearable]="false"
+              [(ngModel)]="state">
+            </ng-select>
           </div>
         </div> 
       </div>

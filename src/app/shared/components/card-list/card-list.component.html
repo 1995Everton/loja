@@ -1,15 +1,15 @@
 <mdb-card class="align-items-center">
   <div class="view overlay waves-light" mdbWavesEffect>
-    <mdb-card-img [src]="product.miniature"></mdb-card-img>
-    <a [routerLink]="['/details/',product.id]">
-      <div class="mask rgba-white-slight"></div>
-    </a>
+    <mdb-card-img [routerLink]="['/details/',_product.id]" [src]="_product.miniature"></mdb-card-img>
+    <div class="mask flex-center waves-effect waves-light" (click)="toggleFavorite()" >
+      <mdb-icon fas icon="heart" [class]="color" class="icon"></mdb-icon>Favoritos
+    </div>
   </div>
   <mdb-card-body class="text-center">
     <div class="container-text">
-      <span class="truncate">{{ product.name }}</span> 
+      <span class="truncate">{{ _product.name }}</span> 
     </div> 
-    <div>R$ {{ product.unitary_value.replace('.',',') }}</div>
+    <div>R$ {{ _product.unitary_value.replace('.',',') }}</div>
   </mdb-card-body>
 </mdb-card>
     

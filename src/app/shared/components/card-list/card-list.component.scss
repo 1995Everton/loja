@@ -7,3 +7,11 @@
     text-overflow: ellipsis;
   }
 }
+
+.mask {
+  height: 75px !important;
+  top: 73% !important;
+  .icon {
+    margin-right: 0.5em;
+  }
+}

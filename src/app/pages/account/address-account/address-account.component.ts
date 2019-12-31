@@ -13,26 +13,39 @@ export class AddressAccountComponent implements OnInit {
 
   private _address: Address[];
   private _loading = true;
+  private _message: string;
 
   constructor(
     private addressService: AddressService
   ) { }
 
   ngOnInit() {
+    this.getAddress()
+  }
+
+  private getAddress():void{
+    this._loading = true
     this.addressService
       .all()
       .pipe( finalize( () => this._loading = false) )
       .subscribe(
         (success : any) => this._address = success.data,
-        error => console.log(error)
+        error => {
+          this._message = 'Você ainda não possui endereços cadastrados'
+          console.log(error)
+        }
       )
   }
 
-  delete(id: number){
+  private reload(value: boolean):void{
+    this.getAddress()
+  }
+
+  private delete(id: number):void{
     console.log(id)
   }
 
-  edit(id: number){
+  private edit(id: number):void{
     console.log(id)
   }
 

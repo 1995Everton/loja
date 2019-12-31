@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { 
   IconsModule, 
   CardsModule,
@@ -44,7 +45,8 @@ import { AddressModalComponent } from './address-modal/address-modal.component';
     FormsModule, 
     ReactiveFormsModule,
     InputUtilitiesModule,
-    InputsModule
+    InputsModule,
+    NgSelectModule
   ]
 })
 export class AddressAccountModule { }
