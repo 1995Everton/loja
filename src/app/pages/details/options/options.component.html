@@ -6,10 +6,10 @@
   </div>
   <ng-template #content>
     <div class="col-12 col-md-12 border-bottom border-light">
-      <h2 class="title-product">{{ product?.name }}</h2>
+      <h2 class="title-product">{{ _product?.name }}</h2>
     </div>
     <div class="col-12 col-md-12 mb-2">
-      <h1 class="title-price">R$ {{ product?.unitary_value.replace(".",",") }}</h1>
+      <h1 class="title-price">R$ {{ _product?.unitary_value.replace(".",",") }}</h1>
       <span class="">3x de R$ {{ calc() }} sem juros no cartão</span>
     </div>
     <div class="col-12 col-md-12">
@@ -32,6 +32,7 @@
         (click)="addCart()"
       >Comprar</button>
       <button
+        (click)="toggleFavorite()"
         class="mt-2"
         size="sm"
         type="button" 
@@ -40,7 +41,7 @@
         mdbBtn 
         mdbWavesEffect
       >
-        <mdb-icon fas icon="heart"></mdb-icon>
+        <mdb-icon fas icon="heart" [class]="color"></mdb-icon>
         Adicionar aos favoritos
       </button>
     </div>

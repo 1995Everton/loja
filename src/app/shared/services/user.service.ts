@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { environment } from 'src/environments/environment';
+import { Product } from '../models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,10 @@ export class UserService {
 
   put(user: User): Observable<User> {
     return this.http.put<User>(this.BASE_URL + '/user',{ user })
+  }
+
+  getFavorites(): Observable<Product[]>{
+    return this.http.get<Product[]>(this.BASE_URL + '/user/favorite')
   }
 
   toggleFavorite(product_id : number): Observable<any>{

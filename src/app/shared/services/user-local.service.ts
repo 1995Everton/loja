@@ -51,6 +51,7 @@ export class UserLocalService implements OnInit {
 
   private decode(): UserToken{
     const token = this.tokenService.getToken()
-    return jwtDecode(token) as UserToken
+    const user = jwtDecode(token) as UserToken
+    return user ||  {} as UserToken
   }
 }

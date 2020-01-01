@@ -1,1 +1,90 @@
-<p>wishlist-account works!</p>
+<mdb-card>
+
+  <mdb-card-title>
+    <div class="border-bottom text-center py-3 mx-2">
+      <span class="h4 font-default">MEUS FAVORITOS</span>
+    </div>
+  </mdb-card-title>
+
+  <mdb-card-body>
+
+    <div class="row">
+
+      <div *ngIf="_loading; else message" class="col-12 col-md-12 row">
+        <ngx-skeleton-loader 
+          *ngFor="let item of [1,2,3,4,5]"
+          class="col-3 col-md-3" 
+          count="1"
+          [theme]="{ 
+            'border-radius': '5px',
+            height: '160px'
+          }"
+          >
+        </ngx-skeleton-loader>
+      </div>
+
+      <ng-template #message>
+
+        <div *ngIf="_message; else list" class="col-12 col-md-12">
+          <div class="alert alert-light text-center" role="alert">{{ _message }}</div>
+        </div>
+
+      </ng-template>
+
+      <ng-template #list>
+
+        <div class="col-3 col-md-3" *ngFor="let item of _favorites">
+          <figure class="figure d-block text-center" >
+            <span aria-hidden="true" class="remove" (click)="frame.show()">&times;</span>
+            <div mdbModal #frame="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header color-default">
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="frame.hide()">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="text-left mb-0">Remover Favorito</h4>
+                  </div>
+                  <div class="modal-body">Deseja prosseguir com essa ação?</div>
+                  <div class="modal-footer py-1">
+                    <button 
+                      (click)="frame.hide()" 
+                      type="button" 
+                      color="light" 
+                      aria-label="Close" 
+                      size="sm"
+                      mdbWavesEffect
+                      mdbBtn 
+                    >Voltar</button>
+                    <button 
+                      (click)="remove(item.id)"
+                      type="button" 
+                      class="color-default"
+                      size="sm"
+                      mdbWavesEffect 
+                      mdbBtn 
+                    >Excluir</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <img 
+              [src]="item.miniature" 
+              class="figure-img img-fluid"
+              [routerLink]="['/details',item.id]"
+            >
+            <figcaption class="figure-caption text-truncate">{{ item.name }}</figcaption>
+            <figcaption class="figure-caption">R$ {{ item.unitary_value.replace('.',',') }}</figcaption>
+          </figure>
+        </div>
+
+      </ng-template>
+      
+      
+    </div>
+
+  </mdb-card-body>
+
+</mdb-card>
+
+

@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { Product } from 'src/app/shared/models/product';
 import { finalize } from 'rxjs/operators';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-list-product',
@@ -30,7 +31,7 @@ export class ListProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe( (params: Params) => {
-      this._sub_category = parseInt(params.sub_category);
+      this._sub_category = parseInt(params.sub_category)
       this.getProduct() 
     });     
   }

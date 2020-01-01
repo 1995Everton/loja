@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IconsModule, CardsModule, TableModule, WavesModule, ButtonsModule, DropdownModule } from 'angular-bootstrap-md';
+import { IconsModule, CardsModule, TableModule, WavesModule, ButtonsModule, DropdownModule, ModalModule } from 'angular-bootstrap-md';
 import { RouterModule } from '@angular/router';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
@@ -34,7 +34,8 @@ import { AddressAccountModule } from './address-account/address-account.module';
     WavesModule,
     ButtonsModule,
     DropdownModule,
-    AddressAccountModule
+    AddressAccountModule,
+    ModalModule
   ]
 })
 export class AccountModule { }
