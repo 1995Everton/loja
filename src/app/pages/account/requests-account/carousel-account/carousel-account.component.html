@@ -1,0 +1,5 @@
+<mdb-carousel [animation]="'slide'" class="slide-cont">
+  <mdb-carousel-item *ngFor="let item of products" class="slide-item">
+    <img class="img-fluid img" height="250" width="250" [src]="item.miniature">
+  </mdb-carousel-item>
+</mdb-carousel>

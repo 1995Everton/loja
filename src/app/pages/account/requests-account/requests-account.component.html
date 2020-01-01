@@ -1,1 +1,39 @@
-<p>requests-account works!</p>
+<mdb-card>
+
+  <mdb-card-title class="mb-0">
+    <div class="border-bottom text-center py-3 mx-2">
+      <span class="h4 font-default">MEUS PEDIDOS</span>
+    </div>
+  </mdb-card-title>
+
+  <mdb-card-body>
+
+    <div class="row">
+
+      <div class="col-12 col-md-12 border my-2 py-2" *ngFor="let item of _request">
+        <div class="row py-3 font">
+          <div class="col-4 col-md-4 text-center border-right">
+            <app-carousel-account [products]="item.products"></app-carousel-account>
+            <span>Qtde. de produtos: {{ item.amount }}</span>
+          </div>
+          <div class="col-4 col-md-4 border-right flex-column-center align-items-center">
+            <span><strong>Previsão de Entrega:</strong></span>
+            <span>Entrega concluída</span>
+          </div>
+          <div class="col-4 col-md-4 align-items-center d-grid">
+            <div class="d-block flex-column-center align-items-start">
+              <span><strong>Pedido nº:</strong>76277473</span>
+              <span><strong>Data do pedido:</strong> {{ formatDate(item.created_at)}}</span>
+              <span><strong>Total do pedido:</strong> {{ formatMoney(item.price_total) }}</span>
+            </div>
+            <button mdbBtn type="button" class="color-default" size="sm" mdbWavesEffect>Ver Detalhes</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </mdb-card-body>
+
+</mdb-card>
+

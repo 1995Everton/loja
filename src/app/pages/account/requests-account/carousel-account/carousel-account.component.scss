@@ -1,0 +1,22 @@
+%size {
+  width: 100%;
+  height: 100px;
+}
+
+.slide-cont {
+  @extend %size;
+  .slide-item {
+    @extend %size;
+  }
+  .img {
+    object-fit: contain;
+    @extend %size;
+  }
+  .carousel-control-next-icon,
+  .carousel-control-prev-icon {
+    background: #0000000f;
+    border-radius: 20px;
+  }
+  
+}
+
