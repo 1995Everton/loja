@@ -16,7 +16,7 @@ export class TokenService {
   public getToken(): string{
     return window.localStorage.getItem(this._key)
   }
-  public removerToken(): void{
+  public removeToken(): void{
     window.localStorage.removeItem(this._key)
   }
 

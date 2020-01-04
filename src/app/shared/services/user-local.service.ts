@@ -42,7 +42,7 @@ export class UserLocalService implements OnInit {
   }
 
   public logout(): void {
-    this.tokenService.removerToken()
+    this.tokenService.removeToken()
   }
 
   private decodeAndNotify():void {

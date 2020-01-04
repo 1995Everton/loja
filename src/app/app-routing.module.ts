@@ -17,7 +17,9 @@ import { WishlistAccountComponent } from './pages/account/wishlist-account/wishl
 import { RequestsAccountComponent } from './pages/account/requests-account/requests-account.component';
 import { PersonalAccountComponent } from './pages/account/personal-account/personal-account.component';
 import { AddressAccountComponent } from './pages/account/address-account/address-account.component';
-
+import { FinishComponent } from './pages/finish/finish.component';
+import { PaymentFinishComponent } from './pages/finish/payment-finish/payment-finish.component';
+import { ConfirmationFinishComponent } from './pages/finish/confirmation-finish/confirmation-finish.component';
 
 
 const routes: Routes = [
@@ -30,6 +32,23 @@ const routes: Routes = [
     component: LoginComponent,
     canActivate:[
       LoginGuard
+    ]
+  },
+  {
+    path: 'finish',
+    component: FinishComponent,
+    canActivate:[
+      AuthGuard
+    ],
+    children: [ 
+      {
+        path: 'payment',
+        component: PaymentFinishComponent,
+      },
+      {
+        path: 'confirmation',
+        component: ConfirmationFinishComponent,
+      }
     ]
   },
   {

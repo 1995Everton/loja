@@ -1,0 +1,213 @@
+<div class="row no-gutters justify-content-center">
+  <div class="col-12 col-md-12">
+    <ngb-tabset type="pills" justify="center" (tabChange)="tabChange($event)">
+      <ngb-tab id="Boleto">
+        <ng-template ngbTabTitle>
+          <mdb-icon fas icon="barcode" class="mx-1"></mdb-icon>
+          Boleto Bancário
+        </ng-template>
+        <ng-template ngbTabContent>
+          <div class="row justify-content-center tab-content">
+            <div class="col-10 col-md-10">
+              <p class="font-roboto-condensed text-color-default text-center">Você está economizando R$ 52,92 no pagamento em boleto</p>
+              <p class="font-roboto-condensed">Boleto tem até 15% de desconto na compra e é a forma de pagamento que recebe o maior desconto sob o valor total da compra. Esta é a forma mais vantajosa para quem deseja pagar à vista. Você poderá efetuar o pagamento do boleto em qualquer Banco ou Casa Lotérica em qualquer lugar do Brasil, sem necessidade de confirmação do pagamento.</p>
+            </div>
+            <div class="col-10 col-md-10">
+              <div class="row">
+                <div class="col-4 col-md-4" *ngFor="let item of billet">
+                  <ul class="list-group font-default text-center">
+                    <li class="list-group-item {{ item.color }}">{{ item.text }}</li>
+                    <li class="list-group-item {{ item.color }}">{{ money(item.value )}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab id="Cartão">
+        <ng-template ngbTabTitle>
+          <mdb-icon far icon="credit-card" class="mx-1"></mdb-icon>
+          Cartão de crédito
+        </ng-template>
+        <ng-template ngbTabContent>
+          <div class="row justify-content-center tab-content">
+            <div class="col-10 col-md-10">
+              <p class="font-roboto-condensed text-color-default text-center">À vista com até 10% de desconto, de 2x a 3x com até 5% de desconto ou tudo em até 12x sem juros!</p>
+              <p class="font-roboto-condensed">O KaBuM! aceita as bandeiras de cartão VISA, MasterCard, ELO, HiperCard, American Express e Diners - Todos em até 12x sem juros ou com desconto em até 3x!</p>
+            </div>
+            <div class="col-10 col-md-10">
+              <form>
+                <div class="row">
+
+                  <div class="col-4 col-md-4">
+                    <div class="md-form">
+                      <input 
+                        [formControl]="control('name')" 
+                        type="text" 
+                        id="name" 
+                        class="form-control"
+                        mdbInput 
+                      >
+                      <label for="name">Nome do Cartão</label>
+                      <mdb-error *ngIf="error('name','required')">
+                        Campo Obrigatório
+                      </mdb-error>
+                    </div>
+                  </div>
+
+                  <div class="col-4 col-md-4">
+                    <div class="md-form">
+                      <input 
+                        [formControl]="control('number')" 
+                        type="number" 
+                        id="number" 
+                        class="form-control"
+                        mdbInput 
+                      >
+                      <label for="number">Nº Cartão</label>
+                      <mdb-error *ngIf="error('number','required'); else number_number">
+                        Campo Obrigatório
+                      </mdb-error>
+                      <ng-template #number_number>
+                        <mdb-error *ngIf="error('number','number')">
+                          Numero Invalido
+                        </mdb-error>
+                      </ng-template>
+                    </div>
+                  </div>
+
+                  <div class="col-4 col-md-4">
+                    <div class="md-form">
+                      <input 
+                        type="text" 
+                        class="form-control"
+                        placeholder="Validade" 
+                        name="date_validate"
+                        [minDate]="{ year: 1950, month: 1, day: 1}"
+                        [maxDate]="{year: 2008, month: 12, day: 31}"
+                        [(ngModel)]="date_validate"
+                        (click)="d.toggle()"
+                        ngbDatepicker 
+                        #d="ngbDatepicker"
+                      >
+                    </div>
+                  </div>
+
+                  <div class="col-6 col-md-6">
+                    <ng-select 
+                      [items]="itens"
+                      bindLabel="text"
+                      bindValue="amount"
+                      [formControl]="control('installment')" 
+                      [clearable]="false">
+                    </ng-select>
+                  </div>
+
+                  <div class="col-3 col-md-3 helper">
+                    <div class="md-form">
+                      <input 
+                        [formControl]="control('security_code')" 
+                        type="number" 
+                        id="security_code" 
+                        class="form-control"
+                        mdbInput 
+                      >
+                      <label for="security_code">Código de Segurança</label>
+                      <mdb-error *ngIf="error('security_code','required'); else security_code_number">
+                        Campo Obrigatório
+                      </mdb-error>
+                      <ng-template #security_code_number>
+                        <mdb-error *ngIf="error('security_code','number')">
+                          Numero Invalido
+                        </mdb-error>
+                      </ng-template>
+                    </div>
+                  </div>
+
+                  <div class="col-3 col-md-3 helper">
+                    <div class="md-form">
+                      <input 
+                        [formControl]="control('cpf')" 
+                        type="number" 
+                        id="cpf_cnpf" 
+                        class="form-control"
+                        mdbInput 
+                      >
+                      <label for="cpf_cnpf">CPF/CNPJ</label>
+                      <mdb-error *ngIf="error('cpf','required'); else number_cpf_cnpf">
+                        Campo Obrigatório
+                      </mdb-error>
+                      <ng-template #number_cpf_cnpf>
+                        <mdb-error *ngIf="error('cpf','cpf_cnpf')">
+                          CPF/CNPJ Invalido
+                        </mdb-error>
+                      </ng-template>
+                    </div>
+                  </div>
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab id="Paypal">
+        <ng-template ngbTabTitle>
+          <mdb-icon fab icon="cc-paypal" class="mx-1"></mdb-icon>
+          Paypal
+        </ng-template>
+        <ng-template ngbTabContent>
+          <div class="row justify-content-center tab-content">
+            <div class="col-10 col-md-10">
+              <p class="font-roboto-condensed text-color-default text-center">Por que comprar com PayPal?</p>
+            </div>
+            <div class="col-10 col-md-10">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <div class="avatar-icon">
+                    <mdb-icon fas icon="shield-alt" class="mx-3"></mdb-icon>
+                  </div>
+                  <div class="list-content font-roboto-condensed">
+                    <span class="font-weight-bold">Máxima proteção com PayPal</span>
+                    <span>Seu produto entregue ou você pode receber o pagamento de volta</span>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="avatar-icon">
+
+                    <mdb-icon fas icon="credit-card" class="mx-3"></mdb-icon>
+                  </div>
+                  <div class="list-content font-roboto-condensed">
+                    <span class="font-weight-bold">Parcelamento</span>
+                    <span>Parcele em até 10 vezes sem juros</span>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="avatar-icon">
+                    <mdb-icon fas icon="plane" class="mx-3"></mdb-icon>
+                  </div>
+                  <div class="list-content font-roboto-condensed">
+                    <span class="font-weight-bold">Acumule milhas</span>
+                    <span>Continue a acumular milhas do seu cartão de crédito</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+  </div>
+  <div class="col-10 col-md-10 text-right mt-2">
+    <button  
+      type="button" 
+      class="color-default"
+      (click)="next()"
+      mdbBtn
+      mdbWavesEffect>
+      Pagar com {{ form }}
+    </button>
+  </div>
+  
+</div>

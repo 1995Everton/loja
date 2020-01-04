@@ -1,0 +1,13 @@
+.stepper {
+  li {
+    &:hover {
+      background-color: inherit !important;
+    }
+    a {
+      cursor: default;
+    }
+  }
+  .circle {
+    font-size: 8px;
+  }
+}

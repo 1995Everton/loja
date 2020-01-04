@@ -5,6 +5,7 @@ import { LocalCartService } from 'src/app/shared/services/local-cart.service';
 import { Product } from 'src/app/shared/models/product';
 import { finalize } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 interface Resume {
   text: string
@@ -24,8 +25,10 @@ export class CartComponent implements OnInit {
   private loading_freight: boolean = false
   private value_freight: string
   private cep = ''
+  
 
   constructor(
+    private router: Router,
     private toastr: ToastrService,
     private localCartService: LocalCartService,
     private postOfficeService: PostOfficeService
@@ -57,10 +60,11 @@ export class CartComponent implements OnInit {
       )
   }
   finish(): void{
-    if(!this.priceFreight){
-      this.toastr.info('','Escolha uma modalidade de frete')
-      return;
-    }
+    // if(!this.priceFreight){
+    //   this.toastr.info('','Escolha uma modalidade de frete')
+    //   return;
+    // }
+    this.router.navigate(['finish'])
     console.log('Emitir Evento')
   }
 

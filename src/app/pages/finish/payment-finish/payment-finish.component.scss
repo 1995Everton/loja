@@ -1,0 +1,23 @@
+.md-form {
+  margin-top: 0 !important;
+}
+.helper {
+  margin-top: 11px;
+}
+.tab-content {
+  padding-top: 10px;
+  height: 260px;
+}
+.list-group-item {
+  display: flex;
+  .avatar-icon {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    color: #fd840e !important;
+  }
+  .list-content {
+    font-size: 15px;
+    display: grid;
+  }
+}

@@ -3,6 +3,7 @@
 @import "~@ng-select/ng-select/themes/material.theme.css";
 @import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
 @import '~ngx-toastr/toastr';
 @import "app/core/header/cart/popovers.scss";
 @import "app/pages/account/requests-account/carousel-account/carousel-account.component.scss";
@@ -18,8 +19,20 @@
   color: #fff !important;
 }
 
+.text-color-default{
+  color: #fd840e !important;
+}
+
 .font-default {
   font-family: 'Oswald', sans-serif !important;
+}
+
+.font-roboto {
+  font-family: 'Roboto', sans-serif !important;
+}
+
+.font-roboto-condensed {
+  font-family: 'Roboto Condensed', sans-serif !important;
 }
 
 .dropdown-menu {

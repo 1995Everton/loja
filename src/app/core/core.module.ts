@@ -8,6 +8,7 @@ import { NavbarModule } from './navbar/navbar.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RequestInterceptor } from './interceptor/request.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorInterceptor } from './interceptor/error.interceptor';
 
 
 
@@ -32,7 +33,11 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
       provide: HTTP_INTERCEPTORS,
       useClass: RequestInterceptor,
       multi: true
-    }
+    },
+    { provide: HTTP_INTERCEPTORS, 
+      useClass: ErrorInterceptor, 
+      multi: true 
+    },
   ]
 })
 export class CoreModule { }
