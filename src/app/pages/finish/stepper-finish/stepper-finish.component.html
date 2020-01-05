@@ -1,9 +1,9 @@
 <div class="row no-gutters align-items-center justify-content-center">
   <div class="col-md-12">
-    <ul class="stepper stepper-horizontal m-0 py-1">
+    <ul class="stepper stepper-horizontal m-0 py-1" *ngIf="stages$ | async as stage;">
       <li>
         <a class="p-3">
-          <span class="circle green white-text">
+          <span class="circle white-text" [ngClass]="{ 'green' : stage.cart }">
             <mdb-icon fas icon="check" size="lg"></mdb-icon>
           </span>
           <span class="label">Carrinho</span>
@@ -11,7 +11,7 @@
       </li>
       <li>
         <a class="p-3">
-          <span class="circle green white-text">
+          <span class="circle white-text" [ngClass]="{ 'green' : stage.identification }">
             <mdb-icon fas icon="check" size="lg"></mdb-icon>
           </span>
           <span class="label">Identificação</span>
@@ -19,7 +19,7 @@
       </li>
       <li>
         <a class="p-3">
-          <span class="circle green white-text">
+          <span class="circle white-text" [ngClass]="{ 'green' : stage.address }">
             <mdb-icon fas icon="check" size="lg"></mdb-icon>
           </span>
           <span class="label">Endereço</span>
@@ -27,7 +27,7 @@
       </li>
       <li class="active">
         <a class="p-3">
-          <span class="circle green white-text">
+          <span class="circle white-text" [ngClass]="{ 'green' : stage.payment }">
             <mdb-icon fas icon="exclamation" size="lg"></mdb-icon>
           </span>
           <span class="label">Pagamento
@@ -36,7 +36,7 @@
       </li>
       <li>
         <a class="p-3">
-          <span class="circle white-text">
+          <span class="circle white-text" [ngClass]="{ 'green' : stage.confirmation }">
             <mdb-icon fas icon="exclamation" size="lg"></mdb-icon>
           </span>
           <span class="label">Confirmação</span>

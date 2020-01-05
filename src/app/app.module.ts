@@ -7,12 +7,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxsModule } from '@ngxs/store';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { CoreModule } from './core/core.module';
 import { PagesModule } from './pages/pages.module';
+import { StagesState } from './store/state/stages.state';
 
 
 @NgModule({
@@ -28,6 +32,11 @@ import { PagesModule } from './pages/pages.module';
     FormsModule,
     MDBBootstrapModule.forRoot(),
     ToastrModule.forRoot(),
+    NgxsModule.forRoot([
+      StagesState
+    ]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot(),
     NgbModule,
     CoreModule,
     PagesModule
