@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ConfirmationFinishComponent } from './confirmation-finish.component';
+import { IconsModule, CardsModule, ButtonsModule, WavesModule } from 'angular-bootstrap-md';
 
 
 
@@ -9,7 +10,11 @@ import { ConfirmationFinishComponent } from './confirmation-finish.component';
     ConfirmationFinishComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    IconsModule,
+    CardsModule,
+    ButtonsModule,
+    WavesModule
   ]
 })
 export class ConfirmationFinishModule { }

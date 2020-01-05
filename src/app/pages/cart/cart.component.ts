@@ -64,7 +64,7 @@ export class CartComponent implements OnInit {
     //   this.toastr.info('','Escolha uma modalidade de frete')
     //   return;
     // }
-    this.router.navigate(['finish'])
+    this.router.navigate(['/finish','payment'])
     console.log('Emitir Evento')
   }
 

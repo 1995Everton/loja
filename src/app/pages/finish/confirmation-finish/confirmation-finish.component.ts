@@ -12,4 +12,8 @@ export class ConfirmationFinishComponent implements OnInit {
   ngOnInit() {
   }
 
+  finish(){
+    console.log('oi')
+  }
+
 }
