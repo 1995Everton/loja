@@ -11,6 +11,7 @@ export class UserLocalService implements OnInit {
 
 
   private _userSubject = new BehaviorSubject<UserToken>(null)
+  private _loggedSubject = new BehaviorSubject<boolean>(this.isLogged())
 
   constructor(
     private tokenService : TokenService
@@ -33,6 +34,10 @@ export class UserLocalService implements OnInit {
     return this.tokenService.hasToken()
   }
 
+  public isLoggedObservable(): Observable<boolean>{
+    return this._loggedSubject.asObservable()
+  }
+
   public userName(): string {
     return this.decode().name
   }
@@ -42,10 +47,12 @@ export class UserLocalService implements OnInit {
   }
 
   public logout(): void {
+    this._loggedSubject.next(false)
     this.tokenService.removeToken()
   }
 
   private decodeAndNotify():void {
+    this._loggedSubject.next(this.isLogged())
     this._userSubject.next(this.decode())
   }
 

@@ -1,43 +1,43 @@
 <div class="row no-gutters align-items-center justify-content-center">
   <div class="col-md-12">
     <ul class="stepper stepper-horizontal m-0 py-1" *ngIf="stages$ | async as stage;">
-      <li>
+      <li [ngClass]="{ 'active' : stage.active == 'cart'}">
         <a class="p-3">
           <span class="circle white-text" [ngClass]="{ 'green' : stage.cart }">
-            <mdb-icon fas icon="check" size="lg"></mdb-icon>
+            <mdb-icon fas icon="shopping-cart" size="lg"></mdb-icon>
           </span>
           <span class="label">Carrinho</span>
         </a>
       </li>
-      <li>
+      <li [ngClass]="{ 'active' : stage.active == 'identification'}">
         <a class="p-3">
           <span class="circle white-text" [ngClass]="{ 'green' : stage.identification }">
-            <mdb-icon fas icon="check" size="lg"></mdb-icon>
+            <mdb-icon fas icon="user" size="lg"></mdb-icon>
           </span>
           <span class="label">Identificação</span>
         </a>
       </li>
-      <li>
+      <li [ngClass]="{ 'active' : stage.active == 'address'}">
         <a class="p-3">
           <span class="circle white-text" [ngClass]="{ 'green' : stage.address }">
-            <mdb-icon fas icon="check" size="lg"></mdb-icon>
+            <mdb-icon fas icon="map-marker-alt" size="lg"></mdb-icon>
           </span>
           <span class="label">Endereço</span>
         </a>
       </li>
-      <li class="active">
+      <li [ngClass]="{ 'active' : stage.active == 'payment'}">
         <a class="p-3">
           <span class="circle white-text" [ngClass]="{ 'green' : stage.payment }">
-            <mdb-icon fas icon="exclamation" size="lg"></mdb-icon>
+            <mdb-icon fas icon="wallet" size="lg"></mdb-icon>
           </span>
           <span class="label">Pagamento
           </span>
         </a>
       </li>
-      <li>
+      <li [ngClass]="{ 'active' : stage.active == 'confirmation'}">
         <a class="p-3">
           <span class="circle white-text" [ngClass]="{ 'green' : stage.confirmation }">
-            <mdb-icon fas icon="exclamation" size="lg"></mdb-icon>
+            <mdb-icon fas icon="check" size="lg"></mdb-icon>
           </span>
           <span class="label">Confirmação</span>
         </a>

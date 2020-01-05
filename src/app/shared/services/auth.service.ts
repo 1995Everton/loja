@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { tap } from 'rxjs/operators';
 import { UserLocalService } from './user-local.service';
 import { Observable } from 'rxjs';
+import { Store } from '@ngxs/store';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class AuthService {
   private BASE_URL = environment.BASE_URL
 
   constructor(
-    private userService: UserLocalService,
+    private store: Store,
+    private userLocalService: UserLocalService,
     private http: HttpClient
   ) { }
 
@@ -21,8 +23,12 @@ export class AuthService {
     return this.http
       .post(this.BASE_URL + '/login',{ email, password })
       .pipe( tap( response => {
-        console.log( response)
-        this.userService.setToken(response.access_token)
+        this.userLocalService.setToken(response.access_token)
       }))
   }
+
+  public logout(): void {
+    this.userLocalService.logout()
+  }
+
 }

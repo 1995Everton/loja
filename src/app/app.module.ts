@@ -36,7 +36,7 @@ import { StagesState } from './store/state/stages.state';
       StagesState
     ]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot(),
+    // NgxsLoggerPluginModule.forRoot(),
     NgbModule,
     CoreModule,
     PagesModule

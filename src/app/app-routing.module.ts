@@ -20,6 +20,7 @@ import { AddressAccountComponent } from './pages/account/address-account/address
 import { FinishComponent } from './pages/finish/finish.component';
 import { PaymentFinishComponent } from './pages/finish/payment-finish/payment-finish.component';
 import { ConfirmationFinishComponent } from './pages/finish/confirmation-finish/confirmation-finish.component';
+import { FinishGuard } from './core/guard/finish.guard';
 
 
 const routes: Routes = [
@@ -38,7 +39,8 @@ const routes: Routes = [
     path: 'finish',
     component: FinishComponent,
     canActivate:[
-      AuthGuard
+      AuthGuard,
+      FinishGuard
     ],
     children: [ 
       {

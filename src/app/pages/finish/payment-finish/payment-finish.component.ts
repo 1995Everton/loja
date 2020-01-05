@@ -4,6 +4,9 @@ import { number, cpf_cnpf } from 'src/app/shared/validations/all.validator';
 import { NgbTabChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { Store } from '@ngxs/store';
+import { UpdateStages } from 'src/app/store/actions/stages.action';
+import { StagesType } from 'src/app/store/model/stages';
 
 interface Billet {
   text: string,
@@ -34,7 +37,8 @@ export class PaymentFinishComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private store: Store
   ) {
     this.itens = this.installment()
   }
@@ -71,6 +75,7 @@ export class PaymentFinishComponent implements OnInit {
 
   next(){
     console.log(this.cardForm.getRawValue())
+    this.store.dispatch(new UpdateStages(true,StagesType.PAYMENT))
     this.router.navigate(['/finish','confirmation'])
   }
 

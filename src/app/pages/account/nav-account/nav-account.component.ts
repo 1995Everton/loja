@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserLocalService } from 'src/app/shared/services/user-local.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 interface Home {
   icon: string
@@ -17,7 +18,7 @@ export class NavAccountComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private userLocalService: UserLocalService
+    private authService: AuthService
   ) { }
 
   private cards =[
@@ -51,7 +52,7 @@ export class NavAccountComponent implements OnInit {
   ngOnInit() {}
 
   logout(){
-    this.userLocalService.logout()
+    this.authService.logout()
     this.router.navigate(['/login'])
   }
 

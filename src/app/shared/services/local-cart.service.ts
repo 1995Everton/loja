@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { startWith } from 'rxjs/operators';
+import { startWith, tap } from 'rxjs/operators';
+import { Store, State } from '@ngxs/store';
+import { UpdateStages } from 'src/app/store/actions/stages.action';
+import { StagesType } from 'src/app/store/model/stages';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +14,9 @@ export class LocalCartService {
   private _userSubject = new Subject<Product[]>()
   private _key = 'cart'
 
-  constructor() { }
+  constructor(
+    private store: Store
+  ) { }
 
   add(product: Product){
     let string = this.get()
@@ -23,6 +28,10 @@ export class LocalCartService {
     return this._userSubject
       .asObservable()
       .pipe(startWith(this.get()))
+      .pipe( tap( item => {
+        this.store.dispatch(new UpdateStages(item.length > 0 ? true : false,StagesType.CART))
+      }))
+      
   }
 
   update(id: number,size: number){
