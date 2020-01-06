@@ -70,6 +70,8 @@ export class LocalCartService {
         ...resto
       }
     }
+    console.log(Object.values(totalize));
+    
     return Object.values(totalize) as Product[]
   }
 

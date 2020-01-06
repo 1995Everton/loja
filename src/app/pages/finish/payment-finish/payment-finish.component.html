@@ -9,7 +9,7 @@
         <ng-template ngbTabContent>
           <div class="row justify-content-center tab-content">
             <div class="col-10 col-md-10">
-              <p class="font-roboto-condensed text-color-default text-center">Você está economizando R$ 52,92 no pagamento em boleto</p>
+              <p class="font-roboto-condensed text-color-default text-center">Você está economizando {{ money( totalProduct - (totalProduct - (totalProduct*0.15))) }} no pagamento em boleto</p>
               <p class="font-roboto-condensed">Boleto tem até 15% de desconto na compra e é a forma de pagamento que recebe o maior desconto sob o valor total da compra. Esta é a forma mais vantajosa para quem deseja pagar à vista. Você poderá efetuar o pagamento do boleto em qualquer Banco ou Casa Lotérica em qualquer lugar do Brasil, sem necessidade de confirmação do pagamento.</p>
             </div>
             <div class="col-10 col-md-10">

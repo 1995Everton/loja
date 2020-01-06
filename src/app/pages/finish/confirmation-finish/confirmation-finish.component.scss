@@ -5,6 +5,11 @@
 }
 
 .product-info {
+  .img-fluid {
+    object-fit: contain;
+    width: 32px;
+    height: 32px;
+  }
   .product-content-info {
     display: flex;
   }

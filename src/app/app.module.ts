@@ -17,6 +17,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { PagesModule } from './pages/pages.module';
 import { StagesState } from './store/state/stages.state';
+import { MeState } from './store/state/me.state';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { StagesState } from './store/state/stages.state';
     MDBBootstrapModule.forRoot(),
     ToastrModule.forRoot(),
     NgxsModule.forRoot([
-      StagesState
+      StagesState,
+      MeState
     ]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     // NgxsLoggerPluginModule.forRoot(),

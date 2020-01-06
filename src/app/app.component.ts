@@ -3,6 +3,7 @@ import { UserLocalService } from './shared/services/user-local.service';
 import { Store } from '@ngxs/store';
 import { UpdateStages } from './store/actions/stages.action';
 import { StagesType } from './store/model/stages';
+import { GetMe } from './store/actions/me.action';
 
 @Component({
   selector: 'app-root',
@@ -20,8 +21,9 @@ export class AppComponent implements OnInit {
     this.userLocalService
       .isLoggedObservable()
       .subscribe(logged => {
-        console.log(logged);
-        
+        if(logged){
+          this.store.dispatch(new GetMe())
+        }
         this.store.dispatch(new UpdateStages(logged,StagesType.IDENTIFICATION))
       })
   }

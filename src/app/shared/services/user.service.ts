@@ -4,12 +4,13 @@ import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { environment } from 'src/environments/environment';
 import { Product } from '../models/product';
+import { Me } from 'src/app/store/model/me';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
+ 
   private BASE_URL = environment.BASE_URL
 
   constructor(
@@ -23,6 +24,10 @@ export class UserService {
 
   put(user: User): Observable<User> {
     return this.http.put<User>(this.BASE_URL + '/user',{ user })
+  }
+
+  setMe() {
+    return this.http.post<Me>(this.BASE_URL + '/user/me',{ })
   }
 
   getFavorites(): Observable<Product[]>{

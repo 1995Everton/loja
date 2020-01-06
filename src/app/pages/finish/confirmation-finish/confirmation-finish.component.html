@@ -6,53 +6,73 @@
         Confira as informações do seu pedido
       </h5>
     </div>
-    <div class="col-5 col-md-5 card-shadows" *ngFor="let item of [1,2]">
+
+    <div class="col-5 col-md-5 card-shadows">
       <mdb-card-body class="card-info">
         <h5 class="font-weight-bold mb-3 font-default">
           <mdb-icon fas icon="list-ul" class="mr-3 text-color-default"></mdb-icon>Dados Pessoais
         </h5>
-        <div class="content-info font-roboto">
-          <span><strong>Nome: </strong>Jonathan Wellington</span>
-          <span><strong>CPF/CNPJ: </strong>015.039.319-94</span>
-          <span><strong>RG: </strong>3660336</span>
-          <span><strong>Telefone:</strong>Não Informado</span>
-          <span><strong>Celular: </strong>47997335928</span>
-          <span><strong>E-mail: </strong>jonathan_wellington@live.com</span>
-          <span><strong>CEP: </strong>89237320</span>
+        <div class="content-info font-roboto" *ngIf="auth">
+          <span><strong>Nome: </strong>{{ auth.user.name }}</span>
+          <span><strong>CPF/CNPJ: </strong>{{ auth.user.cpf }}</span>
+          <span><strong>RG: </strong>{{ auth.user.rg }}</span>
+          <span><strong>Telefone:</strong>{{ auth.user.telephone }}</span>
+          <span><strong>Celular: </strong>{{ auth.user.telephone }}</span>
+          <span><strong>E-mail: </strong>{{ auth.user.email }}</span>
+          <span><strong>CEP: </strong>{{ auth.address[0].cep }}</span>
         </div>
       </mdb-card-body>
     </div>
+
+    <div class="col-5 col-md-5 card-shadows">
+      <mdb-card-body class="card-info">
+        <h5 class="font-weight-bold mb-3 font-default">
+          <mdb-icon fas icon="truck" class="mr-3 text-color-default"></mdb-icon>
+          Endereço para entrega
+        </h5>
+        <div class="content-info font-roboto" *ngIf="auth">
+          <span><strong>Endereço: </strong>{{ auth.address[0].street }}</span>
+          <span><strong>Número: </strong>{{ auth.address[0].number }}</span>
+          <span><strong>Bairro: </strong>{{ auth.address[0].neighborhood }}</span>
+          <span><strong>Cidade:</strong>{{ auth.address[0].city }}</span>
+          <span><strong>Estado: </strong>{{ auth.address[0].state }}</span>
+          <span><strong>CEP: </strong>{{ auth.address[0].cep }}</span>
+          <span><strong>Complemento: </strong>{{ auth.address[0].complement || '' }}</span>
+        </div>
+      </mdb-card-body>
+    </div>
+
     <div class="col-10 col-md-10 card-shadows py-2">
       <h5 class="font-weight-bold font-default text-color-default">
         <mdb-icon fas icon="clipboard-list" class="mr-3"></mdb-icon>
         Produtos do Pedido
       </h5>
     </div>
-    <div class="col-10 col-md-10 card-shadows py-2">
+    <div class="col-10 col-md-10 card-shadows py-2" *ngFor="let product of products">
       <div class="row no-gutters product-info">
         <div class="col-6 col-md-6">
           <h5 class="font-weight-bold mb-3 font-default">Produto</h5>
           <div class="product-content-info font-roboto">
-            <img width="32" height="32" class="img-fluid mr-3" src="https://images2.kabum.com.br/produtos/fotos/104382/cooler-fan-deepcool-xfan-120-120mm-preto-dp-fdc-xf120_cooler-fan-deepcool-xfan-120-120mm-preto-dp-fdc-xf120_1569271179_p.jpg">
-            <span>Cooler FAN Deepcool XFan 120, 120mm, Preto</span>
+            <img width="32" height="32" class="img-fluid mr-3" [src]="product.miniature">
+            <span>{{ product.name }}</span>
           </div>
         </div>
         <div class="col-2 col-md-2 text-center">
           <h5 class="font-weight-bold mb-3 font-default">Quantidade</h5>
           <div class="font-roboto">
-            <span>1</span>
+            <span>{{ product.amount }}</span>
           </div>
         </div>
         <div class="col-2 col-md-2 text-center">
           <h5 class="font-weight-bold mb-3 font-default">Valor unitário</h5>
           <div class="font-roboto">
-            <span>R$ 17,90</span>
+            <span>{{ money(product.unitary_value) }}</span>
           </div>
         </div>
         <div class="col-2 col-md-2 text-center">
           <h5 class="font-weight-bold mb-3 font-default">Total</h5>
           <div class="font-roboto">
-            <span class="text-color-default">R$ 17,90</span>
+            <span class="text-color-default">{{ money(product.unitary_value * product.amount ) }}</span>
           </div>
         </div>
       </div>
@@ -63,7 +83,10 @@
         Valor
       </h5>
     </div>
-    <div class="col-10 col-md-10 card-shadows py-2">
+    <div 
+      class="col-10 col-md-10 card-shadows py-2" 
+      *ngIf="products"
+    >
       <div class="row no-gutters total-price">
         <div class="col-6 col-md-6">
           <div class="total-content-info font-roboto">
@@ -74,8 +97,8 @@
               <strong>Descontos:</strong>
             </div>
             <div class="total-content-values">
-              <span>R$ 17,90</span>
-              <span>R$ 20,43</span>
+              <span>{{ money(totalProduct) }}</span>
+              <span>{{ money(freight_price)}}</span>
               <span>R$ 0,00</span>
               <span>R$ -0,00</span>
             </div>
@@ -83,11 +106,11 @@
         </div>
         <div class="col-6 col-md-6 helper">
           <div class="total-content-total">
-            <div class="text-left"> 
+            <div class="text-left">
               <strong>VALOR TOTAL:</strong>
             </div>
             <div class="text-right">
-              <strong class="text-color-default">R$ 38,33</strong>
+              <strong class="text-color-default">{{ money(totalProduct + freight_price) }}</strong>
             </div>
           </div>
         </div>
@@ -100,10 +123,10 @@
         </span>
         <button
           (click)="finish()"
-          type="button" 
+          type="button"
           class="color-default"
           size="sm"
-          mdbBtn 
+          mdbBtn
           mdbWavesEffect>Finalizar Compra
         </button>
       </div>
