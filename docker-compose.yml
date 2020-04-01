@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+    loja:
+        build: .
+        volumes: 
+            - .:/usr/app
+        ports:
+            - 3000:4200
